@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Footballer!</title>
+    {% load static %}
+    <style> body{
+        width: 1024px;
+        height: 768px;
+        color: grey;
+        background-image: url('{% static 'css/img/1.jpg' %}');
+    }</style>
+</head>
+<body>
+    <h3> Welcome {{user.first_name}}</h3>
+    
+    <table>
+
+        <p>ID : {{user.id}}</p>
+        <p>firstname:  {{user.first_name}}</p>
+        <p>lastname:  {{user.last_name}}</p>
+        <p>email:  {{user.email }}</p>
+        <p>Favourite Team: 
+            {% for team in user.teams.all %}
+            {{team.teamname}}
+            {% endfor %}
+        </p>
+    </table>
+
+
+    <form action="/addteam" method="post">
+        {% csrf_token %}
+        <label for="">Favourite Team:</label>
+            <select name="select_team" id="">
+                {% for team in teams %}
+                <option value="{{team.id}}">{{team.teamname}}</option>
+                {% endfor %}
+
+            </select>
+            <input type="submit" value="submit">
+    </form>
+
+    <form action="/allusers" >
+        <input type="submit" name="All Users" value="All Users" id="">
+    </form>
+
+<br><br>
+    <a href="{% url 'edit_user' user.id %}">| Edit | </a>
+    
+</body>
+</html>

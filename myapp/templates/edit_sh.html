@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Edit</h2>
+    <form class="" action="/editshow/{{id}}" method="post">
+        {% csrf_token %}
+        <label for="title">firstname</label>
+        <input type="text" name="first_name" id="title" value="{{first_name}}">
+
+        <br><br>
+
+        <label for="network">lastname</label>
+        <input type="text" name="last_name" id="network" value="{{last_name}}" >
+
+        <br><br>
+
+        <label for="releasedate">Email</label>
+        <input type="email" name="email" id="releasedate" value="{{email}}">
+
+        <br><br>
+
+
+
+
+        <br><br>
+
+        <input type="submit" value="Update">
+
+    </form>
+</body>
+</html>

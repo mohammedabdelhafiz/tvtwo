@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>All Users</title>
+    <style> body{
+        width: 1024px;
+        height: 768px;
+        color: rgb(255, 255, 255);
+        background-image: url('{% static 'css/img/4.jpg' %}');
+    }</style>
+</head>
+<body>
+    
+    <table>
+        <thead>
+            <td>ID</td>
+            <td>firstname</td>
+            <td>lastname</td>
+            <td>Email</td>
+            <td>Favourite Team</td>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.email}}</td> 
+                <td>
+                    <a href="{% url 'edit_user' user.id %}">Edit | </a>
+                    
+                
+                    <a href="{% url 'del_user' user.id %}">Delete | </a> 
+                </td>
+                    
+            </tr>
+           
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</body>
+</html>
